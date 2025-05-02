@@ -1,0 +1,6 @@
+
+## Day 4 assignment 
+
+-   Create Tour Form with all the tags we learnt till now 
+-   Read at least 15 common  css styling properties 
+
