@@ -1,0 +1,68 @@
+
+.loginWrapper{
+    /* background-color: #ffc9c9; */
+    padding: 20px;
+}
+
+.loginContainer{
+    /* background-color: #b2f2bb ; */
+}
+
+.loginBoxLeft{
+    /* background-color: blue; */
+}
+
+
+.loginBoxLeftTitle{
+    font-weight: 500;
+    font-size: 20px;
+}
+
+
+.loginBoxRight{
+    /* background-color: red; */
+}
+
+.loginContainer{
+    display: flex;
+}
+
+
+.loginBoxLeft img{
+    width: 300px;
+}
+
+
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.loginForm input{
+    height: 45px;
+    border: 2px solid rgb(222, 222, 222);
+    background-color: rgba(249, 248, 248, 0.619);
+    border-radius: 10px;
+    width: 100%;
+}
+
+.loginForm button{
+    height: 45px;
+    border: none;
+    border-radius: 10px;
+    color: white ;
+
+}
+.loginButton{
+    background-color: rgb(0, 102, 255);
+    width: 80%;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.createNewButton{
+    background-color: rgb(17, 190, 17);
+    width: 60%;
+}

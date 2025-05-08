@@ -1,0 +1,93 @@
+
+
+/* 
+
+  <  ------------- NAVBAR  ----------------------->
+
+*/
+
+#navbar{
+    height: 70px;
+    background-color: #020617 ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    position: fixed;
+    width: 100%;
+}
+
+#navMiddleBox{
+    display: flex;
+    gap: 25px;
+}
+
+#navMiddleBox li{
+    list-style: none;
+    font-size: 14px;
+}
+
+
+#navLoginButton{
+    background: var(--secondary_bg_color);
+    color: white;
+    border-radius: 10px;
+    height: 40px;
+    width:80px;
+    border: 2px solid #1e293b;
+}
+
+
+/* 
+
+  <  ------------- HERO SECTION  ----------------------->
+
+*/
+
+
+#heroSection{
+    background: url("../assets/images/heroImage.webp") no-repeat center;
+    background-position: 50%;
+    background-size: cover;
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+#heroContentBox{
+    /* background: red; */
+    width: 60%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items:center;
+}
+
+.heroContentTitle{
+    font-size: 40px;
+    text-align: center;
+    letter-spacing: 4px;
+}
+
+#heroContentParagraph{
+    color: var(--secondary_text_color);
+    text-align: center;
+}
+
+
+#getStartedButton{
+
+    color: white;
+    font-weight: bold;
+    height: 45px;
+    background-color: #4338ca;
+    padding: 0px 30px;
+    border-radius: 15px;
+    border: 3px solid #1e293b;
+    letter-spacing: 1px;
+}

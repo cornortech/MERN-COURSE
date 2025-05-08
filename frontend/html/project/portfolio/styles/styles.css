@@ -1,0 +1,27 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+/* universal selector which selects all the elements in the web page / html document */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+
+
+/* creating a css variable for the color inorder to reuse it in different places  */
+
+:root {
+    --primary_bg_color: #020617;
+    --secondary_bg_color:#13152E;
+    --primary_text_color: #F3F4F6;
+    --secondary_text_color:##9ca3af;
+  }
+
+  body{
+    background-color:  var(--primary_bg_color) ;
+    color: var(--primary_text_color)
+  }
