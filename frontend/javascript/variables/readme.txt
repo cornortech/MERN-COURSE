@@ -41,8 +41,23 @@ let academy1 = "cornortech academy" or 11
 
 
 
-
 // if else if statement
+
+if(marks == 80){
+
+    console.log("you got 80")
+
+} else if(marks==90){
+
+    console.log("you got 90")
+    
+}else{
+    console.log("you got neither 80 nor 90")
+}
+
+
+
+
 
 
 
