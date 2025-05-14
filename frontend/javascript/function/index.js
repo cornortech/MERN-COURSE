@@ -59,17 +59,75 @@
 
 
 
-function greet(name){
-    console.log("Namaste " + name);
-    console.log("Hare Krishna " + name);
-}
+
+// function declaration / function definition
+// function greet(name){
+
+//     console.log("Welcome to the function "  + name);
+//     console.log("Have a nice day " + name);
+// }
+
+// // function call / function invocation
+
+// greet("Sagar Sharma")
+// greet("Gajendra Sharma")
 
 
-greet("Ashwin")
-greet("Sushant")
-greet("Maikal")
-greet("Gajendra Sharma")
-greet("Rajesh")
-greet("Abhay")
-greet("Aman")
+// greet("Ashwin")
+// greet("Sushant")
+// greet("Maikal")
+// greet("Gajendra Sharma")
+// greet("Rajesh")
+// greet("Abhay")
+// greet("Aman")
+
+
+//  fat arrow function 
+
+// let greet  = name =>  console.log("Welcome to the function", name);
+
+
+// greet("Sagar Sharma");
+
+
+
+// normal way of writing a function
+
+// function greet(name){
+//     console.log("Welcome to the function "  + name);
+//     console.log("Have a nice day " + name);
+// }
+
+
+
+
+// create a function that takes a number as an argument and returns the square of that number
+
+// function square(number){
+//     let result = number * number;
+//     return result;
+// }
+
+// let squareResult = square(9)
+
+// console.log("Square of 9 is : " + squareResult); // 81
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let square = number => number * number;
+
+
+// let squareResult = square(2)
+// console.log("Square of 2 is : " + squareResult); // 4
 
