@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">Click to display latest time</button>
+    <p id="time"></p>
+    <button id="closeBtn">close this tab</button>
+
+</body>
+<script>
+ // events in JavaScript
+
+ // 1. click , mouseover , mouseout , mousemove , mouseup , mousedown , dblclick , contextmenu
+ // 2. keydown , keyup , keypress , input , change , select , submit
+ // 3. load , unload , abort , error , resize , scroll , focus , blur ,
+ // 4. reset , search , select , change , input , load , unload , abort ,
+ // 5. error , resize , scroll , focus , blur ,
+
+    // access the elements
+const timeElement = document.querySelector("#time")
+const closeButton = document.querySelector("#closeBtn")
+const buttonElement = document.querySelector("#btn")
+
+
+// functions 
+
+  function displayTime(){
+    timeElement.innerText = new Date().toLocaleTimeString()
+  }
+
+  function closeWebsite(){
+    window.close()
+  };
+
+// event listeners
+
+buttonElement.addEventListener("click", displayTime)
+closeButton.addEventListener("click", closeWebsite)
+
+</script>
+</html>
