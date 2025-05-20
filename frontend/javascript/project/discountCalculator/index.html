@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discount Calculator</title>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    
+    <div id="appContainer">
+
+        <div id="calculatorBox">
+            <!-- calculator heading -->
+         <div id="calculatorHeadingBox">
+             <h1>Discount Calculator</h1>
+             <p>Enter the bill amount and discount percentage to calculate the total.</p>
+        </div>
+        <!-- calculator form  -->
+        <div id="formBox">
+
+            <!--  -->
+
+            <div class="inputGroup">
+                
+            <label  class="calculatorInputLabel" for="">Bill Amount</label>
+            <input id="billAmountInput" class="calculatorInput" type="number" >
+            </div>
+
+            <div class="inputGroup">
+
+            <!--  -->
+            <label class="calculatorInputLabel"  for="">Discount percentage</label>
+            <input id="disPerInput"  class="calculatorInput"  type="number">
+            </div>
+            
+            <!--  -->
+            <div>
+                Total : <b id="totalAmount"></b>
+            </div>
+            <button type="submit" id="calculateBtn">Calculate</button>
+        </form>
+        </div>
+
+    </div>
+
+
+</body>
+<script src="./script.js"></script>
+</html>

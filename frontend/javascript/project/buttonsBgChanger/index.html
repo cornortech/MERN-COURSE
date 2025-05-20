@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="redButton">change background to red</button>
+    <button id="blueButton" >change background to blue</button>
+    
+</body>
+<script>
+    const redButton = document.querySelector("#redButton");
+    const blueButton = document.querySelector("#blueButton");
+
+
+
+
+    function changeBackgroundColor(color){
+        document.body.style.backgroundColor = color;
+    }
+
+  
+
+    // add event listener to blue button
+    blueButton.addEventListener("click", function(){
+        changeBackgroundColor("blue")
+    })
+
+    // add event listener to blue button
+    redButton.addEventListener("click",function(){
+        changeBackgroundColor("red")
+    })
+
+
+
+
+
+</script>
+</html>
