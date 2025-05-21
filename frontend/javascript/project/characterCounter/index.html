@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <style>
+
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+              font-family: "Poppins", sans-serif;
+        }
+
+        #appContainer{
+            background: rgb(250, 249, 249);
+            height: 100vh;  
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        #counterBox{
+            width:500px;
+            height: 300px;
+            border:1px solid rgb(234, 233, 233);
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+        }
+        #textInput{
+            width:100%;
+            border: 1px solid rgb(245, 241, 241);
+            outline: none;
+            padding: 10px;
+        }
+
+
+        #counterInfoBox{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="appContainer">
+        <div id="counterBox">
+            <h1>Realtime character counter</h1>
+            <textarea id="textInput" rows="10" placeholder="Enter characters..."></textarea>
+            <div id="counterInfoBox">
+                <p>Total characters  <span id="currentCharacterCount">0</span> </p>
+                <p>Remaining characters  <span id="remainingCharacterCount">50</span> </p>
+            </div>
+        </div>
+
+    </div>
+    
+</body>
+<script src="./script.js"></script>
+</html>
