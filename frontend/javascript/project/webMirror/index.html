@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #mirrorBox{
+            width: 100%;
+            height: 80vh;
+        }
+        #toggleCamera{
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: blue;
+        }
+        .buttonBox{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+    <video id="mirrorBox" src=""></video>
+
+
+    <div class="buttonBox">
+        <button id="toggleCamera"></button>
+    </div>
+    
+</body>
+<script src="./style.js"></script>
+</html>
