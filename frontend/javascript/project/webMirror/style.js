@@ -1,64 +1,24 @@
+let video = document.getElementById('video');
+let stream;
 
-// global scope variable; 
-let stream = null;
-
-async function openCamera() {
+async function startCamera() {
   try {
-
-
-
-     stream = await navigator.mediaDevices.getUserMedia({
-      audio: false,
-      video: true,
-    });
-
- 
-//  local scope / block scope variable 
-    const mirrorElm = document.querySelector("#mirrorBox")
-
-    if(mirrorElm){
-        mirrorElm.srcObject = stream;
-        mirrorElm.play()
-    }
-    
-
-  } catch (error) {
-    console.log("Error accessing camera:", error);
+    stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    video.srcObject = stream;
+  } catch (err) {
+    alert('Error accessing camera: ' + err.message);
   }
 }
 
-async function closeCamera(){
-  
-
-  try {
-    
-    await stream.getTracks().forEach(track=>track.stop())
-
-    const mirrorElm = document.querySelector("#mirrorBox")
-
-    if(mirrorElm){
-        mirrorElm.srcObject = null;
-        stream= null;
-
-    }
-
-    
-  } catch (error) {
-    console.log(error)
+function stopCamera() {
+  if (stream) {
+    let tracks = stream.getTracks();
+    tracks.forEach(track => track.stop());
+    video.srcObject = null;
   }
 }
 
-document.querySelector("#toggleCamera").addEventListener("click",function(){
-
-  if(stream){
-    closeCamera()
-  }else{
-    openCamera()
-  }
-
-})
+// document.querySelector("#startButton").addEventListener("click",startCamera);
 
 
-openCamera()
-
-
+// document.querySelector("#closeButton").addEventListener("click",stopCamera)
