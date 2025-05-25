@@ -1,24 +1,38 @@
 // global scope variables
 
-let username = "Ram ram ram ram ram ram ram ram ram ram ram ram ";
+    // global scope variables are those variables which are not defined inside any block { } 
+    // global scope variables are accessible all around the file.
 
+
+
+
+    {
+
+        // local / block scope variable ;
+
+
+        let username = "Ram ram ram ram ram ram ram ram ram ram ram ram";
+    }
+
+
+    
+    
 
 // local scope / block scope variable 
+
 // {  } block 
 
-// console.log(username)
-// function getSum (){
 
-//     // local / block / functional 
 
-//     let result = 11;
 
-//     console.log(`result`);
-//     console.log(username)
-// }
 
-// if(true){
-//  let address = "ayodhya";
-//  console.log(address);
-// }
+// false | 0 | "" | null | undefined -> falsy value
+
+
+// "asd" | !0 | {} | [] | true - truthly value;
+
+if("false"){
+    let address = "ayodhya";
+    console.log(address);
+}
 
