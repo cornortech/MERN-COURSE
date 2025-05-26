@@ -91,6 +91,42 @@ student1.intro(); // Hello ! My name is Gajendra and I am 21 years old.
 student1.read(); // Gajendra is reading.
 student1.goToSchool(); // Gajendra is going to ABC School.
 
+class Vehile {
+  constructor(name, price, color) {
+    this.name = name;
+    this.price = price;
+    this.color = color;
+  }
 
-// vehicle parent class 
-// class Car extends Vehicle  {}
+  start() {
+    console.log(`${this.name} is started.`);
+  }
+
+  stop() {
+    console.log(`${this.name} is stopped.`);
+  }
+}
+
+class Car extends Vehile {
+  constructor(name, price, color, model) {
+    super(name, price, color);
+    this.model = model;
+  }
+
+  drive() {
+    console.log(`${this.name} is driving.`);
+  }
+}
+
+class Bike extends Vehile {
+  constructor(name, price, color, type) {
+    super(name, price, color);
+    this.type = type;
+  }
+
+  ride() {
+    console.log(`${this.name} is riding.`);
+  }
+}
+const car1 = new Car("Honda City", 1000000, "White", "2023");
+const bike1 = new Bike("Yamaha FZ", 150000, "Black", "Sport");
