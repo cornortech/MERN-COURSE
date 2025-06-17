@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  /* Dark mode colors */
+  --text-color: #e3e3e3;
+  --subheading-color: #828282;
+  --placeholder-color: #a6a6a6;
+  --primary-color: #242424;
+  --secondary-color: #383838;
+  --secondary-hover-color: #444;
+}
+
+body {
+  background-color: var(--primary-color);
+}
+
+/* app container */
+
+.appContainer {
+  margin: 0px auto;
+  max-width: 980px;
+  height: 100vh;
+}
+
+/* welcome view  */
+
+.welcomeView {
+  padding: 40px 0px;
+}
+
+.title {
+  color: var(--text-color);
+  font-size: 3rem;
+  font-weight: 500;
+  background-clip: text;
+  background: linear-gradient(to right, #4285f4, #d96570);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subTitle {
+  font-weight: 500;
+  font-size: 2.6rem;
+  color: var(--subheading-color);
+}
+
+/* welcome box wrapper */
+
+.welcomeBoxWrapper {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.welcomeBox {
+  width: 222px;
+  /* height: 150px; */
+  background-color: var(--secondary-color);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* icoin */
+
+.icon{
+    width: 42px;
+  height: 42px;
+  display: flex;
+  font-size: 1.3rem;
+  margin-top: 2.5rem;
+  align-self: flex-end;
+  align-items: center;
+  border-radius: 50%;
+  justify-content: center;
+  color: var(--text-color);
+  background: var(--primary-color);
+  text-align: center;
+  padding-top: 8px;
+}
