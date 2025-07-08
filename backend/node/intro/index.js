@@ -1,6 +1,13 @@
 // inbuilt module created by nodejs to make http server
 
+// ES Modules
+// import http from "http"
+
+// CommonJS
+// custom module
+const dbModule = require("./db");
 const http = require("http");
+const fileSystem = require("fs"); // file sytem
 
 const users = [
   {
@@ -43,7 +50,7 @@ const post = [
 ];
 
 const server = http.createServer((req, res) => {
-  const path = req.url;
+  const path = req.url; //         /users
 
   if (path === "/posts") {
     const jsonData = JSON.stringify(post);
@@ -60,7 +67,7 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(8000, () => {
-  console.log("server started at port 8000;");
+  console.log(`Server started at : http://127.0.0.1:8000`);
 });
 
 // server

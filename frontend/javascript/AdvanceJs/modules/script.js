@@ -1,3 +1,1 @@
-// import { customCalculator } from "./module";
-
-// customCalculator.getDiv()
+// import {getDiv} from "./calculator"

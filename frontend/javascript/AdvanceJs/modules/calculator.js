@@ -1,5 +1,3 @@
-
-
 const getSum =(a,b)=>  a + b
 
 const getSub = (a,b)=> a - b;
