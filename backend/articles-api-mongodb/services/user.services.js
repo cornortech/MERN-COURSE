@@ -16,6 +16,15 @@ class UserService {
       throw new Error(error.message || "Failed to delete user");
     }
   }
+
+  static async getSingleUser(filter) {
+    try {
+      const userExist = await UserModel.findOne(filter);
+      return userExist;
+    } catch (error) {
+      throw new Error("User not found");
+    }
+  }
 }
 
 module.exports = UserService;

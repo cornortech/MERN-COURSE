@@ -1,6 +1,6 @@
-const ArticleModel = require("../model/article.model");
-const userModel = require("../model/user.model");
 const mongoose = require("mongoose");
+const ArticleService = require("../services/article.service");
+const UserService = require("../services/user.services");
 
 class ArticleController {
   static async createArticle(req, res) {
@@ -12,14 +12,14 @@ class ArticleController {
         });
       }
 
-      const newArticle = {
+      const newArticlePayload = {
         title: req.body.title,
         description: req.body.description,
         tags: req.body.tags,
         userId: req.userId,
       };
 
-      await ArticleModel.create(newArticle);
+      await ArticleService.createArticle(newArticlePayload);
 
       res.status(201).json({
         success: true,
@@ -34,12 +34,10 @@ class ArticleController {
       });
     }
   }
+
   static async getAllArticles(req, res) {
     try {
-      const articles = await ArticleModel.find().populate({
-        path: "userId",
-        select: "username email",
-      });
+      const articles = await ArticleService.getArticles({});
 
       res.json({
         message: true,
@@ -53,10 +51,15 @@ class ArticleController {
       });
     }
   }
+
   static async getArticlesOfUser(req, res) {
     try {
       const userId = req.params.id;
-      const userExist = await userModel.findById(userId);
+      // const userExist = await userModel.findById(userId);
+
+      const userExist = await UserService.getSingleUser({
+        _id: userId,
+      });
 
       if (!userExist) {
         return res.status(404).json({
@@ -65,7 +68,11 @@ class ArticleController {
         });
       }
 
-      const articles = await ArticleModel.find({
+      // const articles = await ArticleModel.find({
+      //   userId: userId,
+      // });
+
+      const articles = await ArticleService.getArticles({
         userId: userId,
       });
 
@@ -81,10 +88,15 @@ class ArticleController {
       });
     }
   }
+
   static async updateArticleById(req, res) {
     try {
       const articleId = req.params.id;
-      const articleExist = await ArticleModel.findById(articleId);
+      // const articleExist = await ArticleModel.findById(articleId);
+
+      const articleExist = await ArticleService.getSingleArticle({
+        _id: articleId,
+      });
 
       if (!articleExist) {
         return res.status(404).json({
@@ -102,13 +114,26 @@ class ArticleController {
         });
       }
 
-      await ArticleModel.findByIdAndUpdate(articleId, {
-        $set: {
-          title: req.body.title || articleExist.title,
-          description: req.body.description || articleExist.description,
-          tags: req.body.tags || articleExist.tags,
+      // await ArticleModel.findByIdAndUpdate(articleId, {
+      //   $set: {
+      //     title: req.body.title || articleExist.title,
+      //     description: req.body.description || articleExist.description,
+      //     tags: req.body.tags || articleExist.tags,
+      //   },
+      // });
+
+      const updatePayload = {
+        title: req.body.title || articleExist.title,
+        description: req.body.description || articleExist.description,
+        tags: req.body.tags || articleExist.tags,
+      };
+
+      await ArticleService.updateArticle(
+        {
+          _id: articleId,
         },
-      });
+        updatePayload
+      );
 
       res.status(200).json({
         success: true,
@@ -122,6 +147,7 @@ class ArticleController {
       });
     }
   }
+
   static async deleteArticleById(req, res) {
     try {
       // authorization - if user has a permission to to the action
@@ -136,7 +162,10 @@ class ArticleController {
         });
       }
 
-      const articleExist = await ArticleModel.findById(articleId);
+      // const articleExist = await ArticleModel.findById(articleId);
+      const articleExist = await ArticleService.getSingleArticle({
+        _id: articleId,
+      });
 
       if (!articleExist) {
         return res.status(404).json({
@@ -158,7 +187,7 @@ class ArticleController {
 
       console.log("article", articleExist);
 
-      await ArticleModel.deleteOne({
+      await ArticleService.deleteArticle({
         _id: articleId,
       });
 

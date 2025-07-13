@@ -11,7 +11,6 @@ const articleSchema = mongoose.Schema({
     minLength: [20, "description should of at least 20 character"],
     required: [true, "Description field is required."],
   },
-
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
