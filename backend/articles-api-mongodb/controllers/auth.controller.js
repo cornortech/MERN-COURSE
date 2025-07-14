@@ -1,4 +1,5 @@
 const AuthService = require("../services/auth.service");
+const EmailService = require("../services/email.service");
 const UserService = require("../services/user.services");
 const jwt = require("jsonwebtoken");
 
@@ -43,10 +44,6 @@ const login = async (req, res) => {
       });
     }
 
-    // const userExist = await userModel.findOne({
-    //   email: req.body.email,
-    // });
-
     const userExist = await UserService.getSingleUser({
       email: req.body.email,
     });
@@ -64,12 +61,31 @@ const login = async (req, res) => {
 
     // const isValidPassword = userExist.password === req.body.password;
 
+    if (userExist.isBlocked) {
+      return res.status(401).json({
+        success: false,
+        message: "Your account is blocked . Please reset your password.",
+      });
+    }
+
     const isValidPassword = AuthService.verifyPassword(
       req.body.password,
       userExist.password
     );
 
     if (!isValidPassword) {
+      userExist.loginAttemts = (userExist.loginAttemts || 0) + 1;
+      if (userExist.loginAttemts >= 3) {
+        userExist.isBlocked = true;
+        EmailService.sendEmail(
+          "Account blocked",
+          "Your account is blocked due to multiple login attemts . Please reset your password.",
+          userExist.email
+        );
+      }
+
+      await userExist.save();
+
       return res.status(401).json({
         success: false,
         message: "Invalid credentails",

@@ -3,7 +3,8 @@ const userModel = require("../model/user.model");
 
 async function AuthMiddleware(req, res, next) {
   try {
-    const token = req.headers["authorization"];
+
+    let token = req.headers["authorization"];
 
     // check if reqest user has send access token
 
@@ -14,6 +15,7 @@ async function AuthMiddleware(req, res, next) {
       });
     }
 
+    token = token.split(" ")[1];
     const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 
     // check if access token is valid

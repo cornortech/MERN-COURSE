@@ -10,13 +10,8 @@ const ArticleController = require("../controllers/articles.controller");
  *       - Articles
  *     summary: This route is used to create a new article.
  *     description: This route is used to create a new article.
- *     parameters:
- *       - in: header
- *         name: Authorization
- *         required: true
- *         description: Authorization token
- *         type: string
- *
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -44,8 +39,8 @@ const ArticleController = require("../controllers/articles.controller");
  *         description: Unauthorized.
  *       500:
  *         description: Internal server error.
- *
  */
+
 router.post("/", AuthMiddleware, ArticleController.createArticle);
 
 router.get("/", ArticleController.getAllArticles); // public route

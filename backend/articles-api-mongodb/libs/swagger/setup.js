@@ -14,6 +14,20 @@ const swaggerSpec = swaggerJsDoc({
         url: "https://www.dev_sagar_sharma.np",
       },
     },
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
+    },
+    security: [
+      {
+        bearerAuth: [],
+      },
+    ],
   },
   apis: ["./routes/*.js"],
 });
