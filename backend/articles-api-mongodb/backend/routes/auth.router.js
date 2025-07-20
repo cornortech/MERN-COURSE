@@ -1,5 +1,10 @@
 const router = require("express").Router();
-const { register, login } = require("../controllers/auth.controller");
+const {
+  register,
+  login,
+  sentPasswordResetLink,
+  resetPassword,
+} = require("../controllers/auth.controller");
 /**
  *
  * @openapi
@@ -75,7 +80,72 @@ router.post("/register", register);
  *         description: Internal server error.
  */
 
-
 router.post("/login", login);
+
+/**
+ * @openapi
+ * /auth/send-reset-password-email:
+ *   post:
+ *     tags:
+ *       - Authentication
+ *     summary: This router is used to send reset password email.
+ *     description: This route is used to send reset password email.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 example: johndoe@example.com
+ *     responses:
+ *       200:
+ *         description: User login successful.
+ *       401:
+ *         description: Invalid credentials.
+ *       500:
+ *         description: Internal server error.
+ */
+
+router.post("/send-reset-password-email", sentPasswordResetLink);
+
+/**
+ * @openapi
+ * /auth/reset-password:
+ *   post:
+ *     tags:
+ *       - Authentication
+ *     summary: This router is used to reset password.
+ *     description: This route is used to reset password.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - password
+ *               - token
+ *             properties:
+ *               password:
+ *                 type: string
+ *                 example: yournewpassword
+ *               token:
+ *                  type: string
+ *                  example: your token here
+ *     responses:
+ *       200:
+ *         description: Password reset successful.
+ *       404:
+ *         description: User not found.
+ *       500:
+ *         description: Internal server error.
+ */
+
+router.post("/reset-password", resetPassword);
 
 module.exports = router;

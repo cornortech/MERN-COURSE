@@ -1,2 +1,0 @@
- (userExist.loginAttemts || 0) + 1;
- token.split(" ")[1];

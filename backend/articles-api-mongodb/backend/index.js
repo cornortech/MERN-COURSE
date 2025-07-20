@@ -7,6 +7,7 @@ const connectDB = require("./libs/db/mongodb");
 const cors = require("cors")
 const swaggerSpec = require("./libs/swagger/setup");
 app.use(express.json()); // parse json data from request and makes it availabe in req.body object
+
 app.use(
   cors({
     origin: "*", // or your frontend origin

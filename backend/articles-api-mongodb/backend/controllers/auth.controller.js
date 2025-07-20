@@ -92,6 +92,11 @@ const login = async (req, res) => {
       });
     }
 
+    if (isValidPassword) {
+      userExist.loginAttemts = 0;
+      await userExist.save();
+    }
+
     const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 
     const jwtToken = jwt.sign(
@@ -118,7 +123,102 @@ const login = async (req, res) => {
   }
 };
 
+const sentPasswordResetLink = async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    const userExist = await UserService.getSingleUser({
+      email,
+    });
+
+    if (!userExist) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    // send reset password email
+
+    const token = jwt.sign(
+      {
+        email: email,
+      },
+      process.env.JWT_SECRET_KEY,
+      {
+        expiresIn: "1h",
+      }
+    );
+
+    EmailService.sendEmail(
+      "Reset password",
+      `
+      <div>
+       <p>Please click the button to reset your password</p>
+       <a href="http://localhost:3000/reset-password/${token}">
+       <button>Reset password</button>
+       </a>
+      </div>
+      `,
+      email
+    );
+
+    return res.status(200).json({
+      message: "Password reset link has been sent to you email.",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "Something went wrong...",
+    });
+  }
+};
+
+const resetPassword = async (req, res) => {
+  try {
+    const { token, password } = req.body;
+
+    const decodedTokenRes = jwt.verify(token, process.env.JWT_SECRET_KEY);
+
+    console.log("decodedTokenRes", decodedTokenRes);
+
+    const userExist = await UserService.getSingleUser({
+      email: decodedTokenRes.email,
+    });
+
+    if (!userExist) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    const hashedPassword = await AuthService.hashPassword(password);
+
+    console.log("previous password ", userExist.password);
+
+    console.log("new hashed password ", hashedPassword);
+    userExist.password = hashedPassword;
+    if (userExist.isBlocked) {
+      userExist.isBlocked = false;
+    }
+    await userExist.save();
+    return res.status(200).json({
+      success: true,
+      message: "Password reset successfull.",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: error.message || "Something went wrong...",
+    });
+  }
+};
 module.exports = {
   login,
   register,
+  resetPassword,
+  sentPasswordResetLink,
 };
