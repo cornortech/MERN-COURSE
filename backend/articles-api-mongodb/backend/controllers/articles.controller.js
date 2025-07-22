@@ -52,6 +52,41 @@ class ArticleController {
     }
   }
 
+  static async getArticleById(req, res) {
+    try {
+      const articleId = req.params.id;
+
+      if (!mongoose.isValidObjectId(articleId)) {
+        return res.status(403).json({
+          success: false,
+          message: "Invalid article id",
+        });
+      }
+
+      const articleExist = await ArticleService.getSingleArticle({
+        _id: articleId,
+      })
+
+      if (!articleExist) {
+        return res.status(404).json({
+          success: false,
+          message: "Article not found with this id.",
+        });
+      }
+
+      res.status(200).json({
+        success: true,
+        data: articleExist,
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        success: false,
+        message: `${error.message || "Something went wrong.."}`,
+      });
+    }
+  }
+
   static async getArticlesOfUser(req, res) {
     try {
       const userId = req.params.id;

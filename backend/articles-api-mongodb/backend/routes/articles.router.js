@@ -49,6 +49,9 @@ router.get("/user/:id", AuthMiddleware, ArticleController.getArticlesOfUser);
 
 router.put("/:id", AuthMiddleware, ArticleController.updateArticleById);
 
+// articles/:id
+router.get("/:id", ArticleController.getArticleById); // public route
+
 router.delete("/:id", AuthMiddleware, ArticleController.deleteArticleById);
 
 module.exports = router;

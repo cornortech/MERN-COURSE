@@ -4,7 +4,7 @@ const userModel = require("../model/user.model");
 async function AuthMiddleware(req, res, next) {
   try {
 
-    let token = req.headers["authorization"];
+    let token = req.headers["authorization"]; // Bearer token
 
     // check if reqest user has send access token
 

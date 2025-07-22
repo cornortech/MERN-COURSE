@@ -16,7 +16,9 @@ async function handleLogin(e) {
     );
 
     if (res.status === 200) {
-      document.cookie = `article-token=${res.data.token}`;
+
+      localStorage.setItem("token", res.data.token);
+      // document.cookie = `article-token=${res.data.token}`;
       showSuccessToastForInterval(5000);
       setTimeout(() => {
         // window.location.href = "../../html/index.html";

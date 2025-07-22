@@ -5,13 +5,17 @@ class ArticleService {
     try {
       await articleModel.create(newArticle);
     } catch (error) {
-      throw new Error("Failed to create article");
+      console.error("Error creating article:", error);
+      throw new Error(error.message || "Failed to create article");
     }
   }
 
   static async getSingleArticle(filter = {}) {
     try {
-      const articleExist = await articleModel.findOne(filter);
+      const articleExist = await articleModel.findOne(filter).populate({
+        path: "userId",
+        select: "username email",
+      });
       return articleExist;
     } catch (error) {
       throw new Error("Failed to get article");
