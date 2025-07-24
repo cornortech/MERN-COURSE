@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const MONGO_URL = process.env.MONGODB_URL;
+const PORT = process.env.PORT || 8000;
 
 async function connectDB(app) {
   try {
@@ -11,8 +12,8 @@ async function connectDB(app) {
     }
     await mongoose.connect(MONGO_URL);
     console.log("Database connected...");
-    app.listen(8000, () => {
-      console.log(`server is running on http://127.0.0.1:8000`);
+    app.listen(PORT, () => {
+      console.log(`server is running on http://127.0.0.1:${PORT}`);
     });
   } catch (error) {
     console.log(error);

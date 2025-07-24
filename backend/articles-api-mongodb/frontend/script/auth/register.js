@@ -20,7 +20,7 @@ async function handleRegister(e) {
 
   try {
     const res = await axios.post(
-      "http://localhost:8000/auth/register",
+      "https://hare-krishna-article.onrender.com/auth/register",
       registerPayload
     );
 

@@ -5,6 +5,7 @@ const {
   sentPasswordResetLink,
   resetPassword,
 } = require("../controllers/auth.controller");
+const AuthMiddleware = require("../middlewares/auth.middleware");
 /**
  *
  * @openapi
@@ -148,4 +149,21 @@ router.post("/send-reset-password-email", sentPasswordResetLink);
 
 router.post("/reset-password", resetPassword);
 
+router.get("/logged-in-user", AuthMiddleware, (req, res) => {
+  if (!req.user) {
+    return res.status(401).json({
+      success: false,
+      message: "User not found.",
+    });
+  }
+  // req.user
+  return res.status(200).json({
+    success: true,
+    user: req.user, // user is attached to request object by AuthMiddleware
+  });
+});
+
 module.exports = router;
+
+
+

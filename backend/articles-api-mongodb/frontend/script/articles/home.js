@@ -1,13 +1,11 @@
 async function fetchAllArticles() {
   try {
-    const res = await axios.get("http://localhost:8000/articles");
+    const res = await axios.get("https://hare-krishna-article.onrender.com/articles");
 
     if (res.status === 200) {
       const articlesData = res.data.data;
 
       const articlesContainer = document.querySelector("#articles-container");
-
-      console.log(articlesData);
 
       //   loop through the articles data array and insert each article into the articles container
       articlesData.forEach((article) => {
@@ -23,7 +21,7 @@ async function fetchAllArticles() {
           </h5>
         </a>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          ${article.description}
+          ${article.description.substring(0, 200)}
         </p>
 
         <div class="flex items-center mb-4">

@@ -11,17 +11,16 @@ async function handleLogin(e) {
 
   try {
     const res = await axios.post(
-      "http://localhost:8000/auth/login",
+      "https://hare-krishna-article.onrender.com/auth/login",
       loginPayload
     );
 
     if (res.status === 200) {
-
       localStorage.setItem("token", res.data.token);
       // document.cookie = `article-token=${res.data.token}`;
       showSuccessToastForInterval(5000);
       setTimeout(() => {
-        // window.location.href = "../../html/index.html";
+        window.location.href = "../../index.html";
       }, 2000);
     }
 

@@ -3,7 +3,6 @@ const userModel = require("../model/user.model");
 
 async function AuthMiddleware(req, res, next) {
   try {
-
     let token = req.headers["authorization"]; // Bearer token
 
     // check if reqest user has send access token
@@ -30,7 +29,14 @@ async function AuthMiddleware(req, res, next) {
 
     const userExist = await userModel.findById(req.userId);
 
-    console.log(userExist);
+    if (!userExist) {
+      return res.status(401).json({
+        success: false,
+        message: "User not found.",
+      });
+    }
+
+    req.user = userExist; // attach user to request object
 
     // next route handler/middleware
 
